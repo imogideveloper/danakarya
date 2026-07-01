@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tasklist //FI \"IMAGENAME eq python.exe\" //FO CSV)",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"Name='python.exe'\")",
+      "PowerShell(Get-NetTCPConnection -State Listen | Where-Object {$_.LocalPort -ge 8000 -and $_.LocalPort -le 8010} | Select-Object LocalAddress, LocalPort, OwningProcess | Sort-Object OwningProcess -Unique)",
+      "Bash(python3 -)",
+      "Bash(grep -n \"Pinjaman Lunas \\\\*/\\\\|Riwayat & Pengajuan \\\\*/\\\\|Pinjaman Aktif \\\\*/\" src/components/pages/dashboard.jsx)",
+      "Bash(grep -n \"{/\\\\* Dokumen Pendukung \\\\*/}\\\\|^ </div>$\\\\|^ \\)}$\" src/components/pages/employees.jsx)",
+      "Bash(python manage.py makemigrations loans)",
+      "Bash(ls -d venv .venv env)",
+      "Bash(find /d/danakarya-react -maxdepth 2 -iname \"*venv*\")",
+      "Bash(./.venv/Scripts/python.exe manage.py makemigrations loans)",
+      "Bash(./.venv/Scripts/python.exe manage.py migrate loans)",
+      "Bash(npm run *)",
+      "Bash(./.venv/Scripts/python.exe test_loan_doc_upload.py)",
+      "Bash(grep -n \"api.get\\('/loans\\\\|api.get\\(\\\\`/loans\\\\|api.get\\('/installments\\\\|/loans/?employee\\\\|installments/?loan\\\\|fetchLoans\\\\|fetchInstallments\\\\|myInstallments\\\\s*=\\\\|myLoans\\\\s*=\" /d/danakarya-react/src/components/pages/dashboard.jsx)",
+      "Bash(./.venv/Scripts/python.exe test_loan_cycle.py)",
+      "Bash(npm audit *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8000/api/)"
+    ]
+  }
+}

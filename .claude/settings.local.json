@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(cd d:\\\\danakarya-react; $job = Start-Job { cd d:\\\\danakarya-react; npm run dev 2>&1 }; Start-Sleep 8; Receive-Job $job; Stop-Job $job; Remove-Job $job)",
+      "PowerShell(python --version)",
+      "PowerShell(pip --version)",
+      "PowerShell(cd d:\\\\danakarya-react\\\\backend; $job = Start-Job { cd d:\\\\danakarya-react\\\\backend; .\\\\.venv\\\\Scripts\\\\python manage.py runserver 8000 2>&1 }; Start-Sleep 5; Receive-Job $job; Stop-Job $job; Remove-Job $job)",
+      "Bash(npm install *)",
+      "Bash(python manage.py shell -c \"from django.contrib.auth import get_user_model; User = get_user_model\\(\\); users = User.objects.filter\\(is_superuser=True\\); print\\('Superusers:'\\); [print\\(f'  id={u.id} | username={u.username} | email={u.email}'\\) for u in users]\")",
+      "Bash(python manage.py makemigrations loans --name add_proof_image_to_settlement)",
+      "PowerShell(Test-Path \"d:\\\\danakarya-react\\\\backend\\\\media\" ; if \\(-not \\(Test-Path \"d:\\\\danakarya-react\\\\backend\\\\media\\\\settlements\\\\proofs\"\\)\\) { New-Item -ItemType Directory -Force \"d:\\\\danakarya-react\\\\backend\\\\media\\\\settlements\\\\proofs\" | Out-Null; \"Created\" } else { \"Already exists\" })",
+      "Bash(.\\\\.venv\\\\Scripts\\\\python.exe manage.py shell -c \"from employees.models import Company; n = Company.objects.all\\(\\).update\\(max_loan_to_salary_percent=50\\); print\\(f'Updated {n} companies'\\)\")",
+      "Bash(cd /d/danakarya-react && head -30 src/lib/api.js)",
+      "Read(//d/d/danakarya-react/src/lib/**)",
+      "Bash(cd /d/danakarya-react/backend && grep -n \"employee_id\\\\|unique\\\\|class Employee\\\\|def create\\\\|def perform_create\" employees/models.py employees/serializers.py | head -40)",
+      "Read(//d/d/danakarya-react/backend/employees/**)",
+      "Bash(cd /d/danakarya-react && grep -n \"excel\\\\|Excel\\\\|XLSX\\\\|xlsx\\\\|import.*file\\\\|parseExcel\\\\|handleFile\\\\|handleImport\" src/components/pages/employees.jsx | head -30)",
+      "Read(//d/d/danakarya-react/src/components/pages/**)",
+      "Bash(curl -s -X POST http://localhost:8000/api/auth/login/ -H \"Content-Type: application/json\" -d '{\"email\":\"admin@danakarya.id\",\"password\":\"admin123\"}')",
+      "Bash(cd /d/danakarya-react/backend && grep -n \"class LoanViewSet\\\\|class LoanApplicationViewSet\\\\|def get_queryset\\\\|request.user\\\\|employee\\\\b\" loans/views.py | head -40)",
+      "Read(//d/d/danakarya-react/backend/loans/**)",
+      "Bash(curl -s http://localhost:8000/api/loans/?page_size=200 -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgwOTI0MDU0LCJpYXQiOjE3ODA4OTUyNTQsImp0aSI6ImMxZjRlM2QyMjI4ZTRmNTliNzY4YzRiOWUwNGJiOGExIiwidXNlcl9pZCI6IjExIn0.N0h9f0XcNlgECnWHQMbh4O-ETPd07BzzTwv0renfPAM')",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); r=d.get\\('results',d\\); print\\('count:', len\\(r\\)\\)\")",
+      "Bash(python manage.py check)",
+      "Bash(./.venv/Scripts/python.exe manage.py check)",
+      "Bash(cp /tmp/test_emp_create.py ./test_emp_create_tmp.py)",
+      "Bash(./.venv/Scripts/python.exe test_emp_create_tmp.py)",
+      "Bash(rm -f /tmp/test_emp_create.py)",
+      "PowerShell(winget --version)",
+      "PowerShell(winget list --id PostgreSQL.PostgreSQL -e 2>$null)"
+    ],
+    "additionalDirectories": [
+      "\\tmp"
+    ]
+  }
+}
